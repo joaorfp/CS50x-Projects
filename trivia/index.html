@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <div class="questions">
+                    <h3>In which F1 team did Ayrton Senna started his carrer?</h3>
+                    <button id="incorrect" class="ans">Lótus</button>
+                    <button id="incorrect" class="ans">McLaren</button>
+                    <button id="correct" class="ans">Toleman</button>
+                    <button id="incorrect" class="ans">Ferrari</button>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Write the surname of the german driver who won 4 championships in a row with RedBull</h3>
+                <div class="an">
+                    <input type="text" id="answer" placeholder="Write your answer">
+                    <button id="check" type="button">Check Answer!</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            const multiDiv = document.querySelector('.questions');
+            const p = document.createElement('p');
+            const buttons = document.querySelectorAll('.ans');
+            const arr = Array.from(buttons);
+
+            arr.forEach((element) => {
+                element.addEventListener('click', ({ target }) => {
+                    if (target.id === 'incorrect') {
+                        target.style.backgroundColor = 'red';
+                        p.innerHTML = 'Incorrect';
+                        multiDiv.append(p);
+                    } else {
+                        target.style.backgroundColor = 'green';
+                        p.innerHTML = 'Correct!';
+                        multiDiv.append(p);
+                    }
+                })
+            });
+
+            const checkBtn = document.querySelector('#check');
+            const answerDiv = document.querySelector('.an');
+            const p2 = document.createElement('p');
+
+
+            checkBtn.addEventListener('click', () => {
+                const answer = document.querySelector('#answer');
+
+                if (answer.value.toLowerCase() === 'vettel') {
+                    answer.style.backgroundColor = 'green';
+                    p2.innerHTML = 'Correct!';
+                    answerDiv.append(p2);
+                } else {
+                    answer.style.backgroundColor = 'red';
+                    p2.innerHTML = 'Incorrect';
+                    answerDiv.append(p2);
+                }
+            })
+
+        </script>
+    </body>
+</html>
